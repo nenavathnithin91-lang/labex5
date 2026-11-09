@@ -2,15 +2,18 @@ pipeline {
     agent any
 
     stages {
+
         stage('Compile') {
             steps {
-                sh 'javac HelloWorld.py'
+                echo 'Checking Python Program'
+                sh 'python3 -m py_compile HelloWorld.py'
             }
         }
 
         stage('Run') {
             steps {
-                sh 'python HelloWorld'
+                echo 'Executing Python Program'
+                sh 'python3 HelloWorld.py'
             }
         }
     }
